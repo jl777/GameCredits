@@ -2930,6 +2930,7 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
 {
     assert(pindexPrev != nullptr);
     const int nHeight = pindexPrev->nHeight + 1;
+    uint256 hash = block.GetHash();
     int32_t notarized_height;
     // Check proof of work
     const Consensus::Params& consensusParams = params.GetConsensus();
