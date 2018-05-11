@@ -1557,8 +1557,8 @@ static const CRPCCommand commands[] =
     { "blockchain",         "verifychain",            &verifychain,            true,  {"checklevel","nblocks"} },
 
     { "blockchain",         "preciousblock",          &preciousblock,          true,  {"blockhash"} },
-    { "blockchain",         "calc_MoM",               &calc_MoM,             {"height", "MoMdepth"}  },
-    { "blockchain",         "height_MoM",             &height_MoM,             {"height"}  },
+    { "blockchain",         "calc_MoM",               &calc_MoM,              true, {"height", "MoMdepth"}  },
+    { "blockchain",         "height_MoM",             &height_MoM,             true, {"height"}  },
 
     /* Not shown in help */
     { "hidden",             "invalidateblock",        &invalidateblock,        true,  {"blockhash"} },
