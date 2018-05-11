@@ -195,7 +195,7 @@ static void FindFilesToPrune(std::set<int>& setFilesToPrune, uint64_t nPruneAfte
 bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsViewCache &inputs, bool fScriptChecks, unsigned int flags, bool cacheSigStore, bool cacheFullScriptStore, PrecomputedTransactionData& txdata, std::vector<CScriptCheck> *pvChecks = nullptr);
 static FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
 
-char ASSETCHAINS_SYMBOL[65] = { "CHIPS" };
+char ASSETCHAINS_SYMBOL[65] = { "GAME" };
 #include "komodo_validation015.h"
 // add calls to ConnectBlock/DisconnectBlock and ContextualCheckBlockHeader
 // komodo_connectblock(pindex,*(CBlock *)&block);
