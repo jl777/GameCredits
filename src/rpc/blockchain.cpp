@@ -1531,6 +1531,9 @@ UniValue getchaintxstats(const JSONRPCRequest& request)
     return ret;
 }
 
+#include "komodo_rpcblockchain.h"
+
+
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafe argNames
   //  --------------------- ------------------------  -----------------------  ------ ----------
@@ -1554,6 +1557,8 @@ static const CRPCCommand commands[] =
     { "blockchain",         "verifychain",            &verifychain,            true,  {"checklevel","nblocks"} },
 
     { "blockchain",         "preciousblock",          &preciousblock,          true,  {"blockhash"} },
+    { "blockchain",         "calc_MoM",               &calc_MoM,             {"height", "MoMdepth"}  },
+    { "blockchain",         "height_MoM",             &height_MoM,             {"height"}  },
 
     /* Not shown in help */
     { "hidden",             "invalidateblock",        &invalidateblock,        true,  {"blockhash"} },
