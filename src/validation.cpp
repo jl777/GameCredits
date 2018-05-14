@@ -1520,7 +1520,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
             // At this point, all of txundo.vprevout should have been moved out.
         }
     }
-    komodo_disconnect((CBlockIndex *)pindex,(CBlock *)&block);
+    //komodo_disconnect((CBlockIndex *)pindex,(CBlock *)&block);
 
     // move best block pointer to prevout block
     view.SetBestBlock(pindex->pprev->GetBlockHash());
@@ -1876,7 +1876,6 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
 
     int64_t nTime6 = GetTimeMicros(); nTimeCallbacks += nTime6 - nTime5;
     LogPrint(BCLog::BENCH, "    - Callbacks: %.2fms [%.2fs]\n", 0.001 * (nTime6 - nTime5), nTimeCallbacks * 0.000001);
-    //komodo_connectblock(pindex,*(CBlock *)&block);
 
     return true;
 }
@@ -2255,7 +2254,7 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
     LogPrint(BCLog::BENCH, "- Connect block: %.2fms [%.2fs]\n", (nTime6 - nTime1) * 0.001, nTimeTotal * 0.000001);
 
     connectTrace.BlockConnected(pindexNew, std::move(pthisBlock));
-    komodo_connectblock(pindexNew,*(CBlock *)&blockConnecting);
+    //komodo_connectblock(pindexNew,*(CBlock *)&blockConnecting);
     return true;
 }
 
@@ -2946,7 +2945,7 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
         CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(params.Checkpoints());
         if (pcheckpoint && nHeight < pcheckpoint->nHeight)
             return state.DoS(100, error("%s: forked chain older than last checkpoint (height %d)", __func__, nHeight), REJECT_CHECKPOINT, "bad-fork-prior-to-checkpoint");
-        else if ( komodo_checkpoint(&notarized_height,(int32_t)nHeight,hash) < 0 )
+        else if ( 0 && komodo_checkpoint(&notarized_height,(int32_t)nHeight,hash) < 0 )
         {
             CBlockIndex *heightblock = chainActive[nHeight];
             if ( heightblock != 0 && heightblock->GetBlockHash() == hash )
