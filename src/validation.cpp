@@ -1520,7 +1520,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
             // At this point, all of txundo.vprevout should have been moved out.
         }
     }
-    //komodo_disconnect((CBlockIndex *)pindex,(CBlock *)&block);
+    komodo_disconnect((CBlockIndex *)pindex,(CBlock *)&block);
 
     // move best block pointer to prevout block
     view.SetBestBlock(pindex->pprev->GetBlockHash());
@@ -2254,7 +2254,7 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
     LogPrint(BCLog::BENCH, "- Connect block: %.2fms [%.2fs]\n", (nTime6 - nTime1) * 0.001, nTimeTotal * 0.000001);
 
     connectTrace.BlockConnected(pindexNew, std::move(pthisBlock));
-    //komodo_connectblock(pindexNew,*(CBlock *)&blockConnecting);
+    komodo_connectblock(pindexNew,*(CBlock *)&blockConnecting);
     return true;
 }
 
