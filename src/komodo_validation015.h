@@ -67,7 +67,7 @@
 int32_t gettxout_scriptPubKey(int32_t height,uint8_t *scriptPubKey,int32_t maxsize,uint256 txid,int32_t n)
 {
     static uint256 zero; int32_t i,m; uint8_t *ptr;
-    //LOCK(cs_main);
+    LOCK(cs_main);
     CTransactionRef tx;
     uint256 hashBlock;
     if ( GetTransaction(txid,tx,Params().GetConsensus(),hashBlock,false) == 0 )
