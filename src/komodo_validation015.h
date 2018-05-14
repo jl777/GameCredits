@@ -67,12 +67,12 @@
 int32_t gettxout_scriptPubKey(int32_t height,uint8_t *scriptPubKey,int32_t maxsize,uint256 txid,int32_t n)
 {
     static uint256 zero; int32_t i,m; uint8_t *ptr;
-    LOCK(cs_main);
+    //LOCK(cs_main);
     CTransactionRef tx;
     uint256 hashBlock;
     if ( GetTransaction(txid,tx,Params().GetConsensus(),hashBlock,true) == 0 )
     {
-        //fprintf(stderr,"ht.%d couldnt get txid.%s\n",height,txid.GetHex().c_str());
+        fprintf(stderr,"ht.%d couldnt get txid.%s\n",height,txid.GetHex().c_str());
         return(-1);
     }
     if ( n >= 0 && n <= (int32_t)tx->vout.size() ) // vout.size() seems off by 1
@@ -1085,7 +1085,8 @@ void komodo_connectblock(CBlockIndex *pindex,CBlock& block)
                             signedmask |= (1LL << k);
                             break;
                         }
-                } //else printf("%s cant get scriptPubKey for ht.%d txi.%d vin.%d\n",ASSETCHAINS_SYMBOL,height,i,j);
+                } else if ( block.vtx[i]->vin[j].prevout.hash != zero )
+                    printf("%s cant get scriptPubKey for ht.%d txi.%d vin.%d\n",ASSETCHAINS_SYMBOL,height,i,j);
             }
             numvalid = bitweight(signedmask);
             if ( numvalid >= KOMODO_MINRATIFY )
