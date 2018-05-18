@@ -895,6 +895,9 @@ bool AppInitParameterInteraction()
     // ********************************************************* Step 2: parameter interactions
 
     // also see: InitParameterInteraction()
+    extern std::string NOTARY_PUBKEY;
+    NOTARY_PUBKEY = gArgs.GetArg("-pubkey", "");
+    decode_hex(NOTARY_PUBKEY33,33,(char *)NOTARY_PUBKEY.c_str());
 
     // if using block pruning, then disallow txindex
     if (gArgs.GetArg("-prune", 0)) {
