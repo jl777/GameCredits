@@ -889,6 +889,8 @@ bool AppInitBasicSetup()
     return true;
 }
 
+int32_t decode_hex(uint8_t *bytes,int32_t n,char *hex);
+
 bool AppInitParameterInteraction()
 {
     const CChainParams& chainparams = Params();
