@@ -895,6 +895,7 @@ bool AppInitParameterInteraction()
     // ********************************************************* Step 2: parameter interactions
 
     // also see: InitParameterInteraction()
+    extern uint8_t NOTARY_PUBKEY33[33];
     extern std::string NOTARY_PUBKEY;
     NOTARY_PUBKEY = gArgs.GetArg("-pubkey", "");
     decode_hex(NOTARY_PUBKEY33,33,(char *)NOTARY_PUBKEY.c_str());
