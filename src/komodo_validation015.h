@@ -14,6 +14,7 @@
  ******************************************************************************/
 
 // in init.cpp at top of AppInitParameterInteraction()
+// int32_t decode_hex(uint8_t *bytes,int32_t n,char *hex);
 // extern uint8_t NOTARY_PUBKEY33[33];
 // extern std::string NOTARY_PUBKEY;
 // NOTARY_PUBKEY = gArgs.GetArg("-pubkey", "");
