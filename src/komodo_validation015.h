@@ -156,9 +156,9 @@ int32_t komodo_importaddress(std::string addr)
     if ( pwallet != 0 )
     {
         LOCK2(cs_main, pwallet->cs_wallet);
-        if ( address.isvalid() != 0 )
+        if ( address.IsValid() != 0 )
         {
-            isminetype mine = IsMine(*pwallet, address);
+            isminetype mine = IsMine(*pwallet, address.get());
             if ( (mine & ISMINE_SPENDABLE) != 0 || (mine & ISMINE_WATCH_ONLY) != 0 )
             {
                 //printf("komodo_importaddress %s already there\n",EncodeDestination(address).c_str());
