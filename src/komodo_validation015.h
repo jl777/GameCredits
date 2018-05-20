@@ -54,7 +54,6 @@
 }*/
 
 #include <wallet/wallet.h>
-#include <key_io.h>
 #include <base58.h>
 
 #define SATOSHIDEN ((uint64_t)100000000L)
@@ -136,12 +135,12 @@ int32_t komodo_importaddress(std::string addr)
             }
             else
             {
-                printf("komodo_importaddress %s\n",EncodeDestination(address).c_str());
+                printf("komodo_importaddress %s\n",CBitcoinAddress(address).c_str());
                 ImportAddress(pwallet, address, addr);
                 return(1);
             }
         }
-        printf("%s -> komodo_importaddress.(%s) failed valid.%d\n",addr.c_str(),EncodeDestination(address).c_str(),IsValidDestination(address));
+        printf("%s -> komodo_importaddress.(%s) failed valid.%d\n",addr.c_str(),CBitcoinAddress(address).c_str(),IsValidDestination(address));
     }
     return(-1);
 }
