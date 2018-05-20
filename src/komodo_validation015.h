@@ -171,7 +171,7 @@ int32_t komodo_importaddress(std::string addr)
                 return(1);
             }
         }
-        printf("%s -> komodo_importaddress.(%s) failed valid.%d\n",addr.c_str(),IsValidDestination(address));
+        printf("%s -> komodo_importaddress.(%s) failed valid.%d\n",addr.c_str(),address.IsValid());
     }
     return(-1);
 }
