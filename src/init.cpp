@@ -889,7 +889,7 @@ bool AppInitBasicSetup()
     return true;
 }
 
-int32_t decode_hex(uint8_t *bytes,int32_t n,char *hex);
+int32_t komodo_init();
 
 bool AppInitParameterInteraction()
 {
@@ -897,10 +897,7 @@ bool AppInitParameterInteraction()
     // ********************************************************* Step 2: parameter interactions
 
     // also see: InitParameterInteraction()
-    extern uint8_t NOTARY_PUBKEY33[33];
-    extern std::string NOTARY_PUBKEY;
-    NOTARY_PUBKEY = gArgs.GetArg("-pubkey", "");
-    decode_hex(NOTARY_PUBKEY33,33,(char *)NOTARY_PUBKEY.c_str());
+    komodo_init();
 
     // if using block pruning, then disallow txindex
     if (gArgs.GetArg("-prune", 0)) {
